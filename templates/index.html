@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style type="text/css">
+    pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    /*page-break-inside: avoid;*/
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    height: auto;
+    overflow-x: hidden;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+    text-align: justify-all;
+
+}
+   /* code {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}*/
+    </style>
+
+    <title>Credit Card Fraud Detection</title>
+  </head>
+  <body>
+    <div class="container-md">
+      <form action="{{ url_for('predict')}}" method="post">
+        <div class="form-group col-md-5">
+          <h3>Predict Faudulent Transactions</h3>
+          <textarea  class="form-control" name="transaction" rows="3"></textarea>
+        </div>
+
+        <div class="col-sm-3">
+          {% if prediction_value %}
+            <small id="passwordHelp" class="text-danger">
+              This is a fraudulent transaction! {{ prediction_value }}
+            </small>
+          {% else %}
+            <small id="passwordHelp" class="text-success">
+              This is not a fraudulent transaction - {{ prediction_value }}
+            </small>
+          {% endif %}
+        </div>
+
+        <div class="form-group col">
+          <button type="submit" class="btn btn-primary">Check</button>
+        </div>
+      </form>
+
+      <div class="form-group col-md-5">
+        <textarea class="form-control" rows="4">{"data": {"r1": {"Time": 0.0, "V1": -1.3598071336738,"V2": -0.0727811733098497,"V3": 2.53634673796914,"V4": 1.37815522427443,"V5": -0.33832076994251803,"V6": 0.462387777762292,"V7": 0.239598554061257,"V8": 0.0986979012610507,"V9": 0.363786969611213,"V10": 0.0907941719789316,"V11": -0.551599533260813,"V12": -0.617800855762348,"V13": -0.991389847235408,"V14": -0.31116935369987897,"V15": 1.46817697209427,"V16": -0.47040052525947795,"V17": 0.20797124192924202,"V18": 0.0257905801985591,"V19": 0.403992960255733,"V20": 0.251412098239705,"V21": -0.018306777944153,"V22": 0.277837575558899,"V23": -0.110473910188767,"V24": 0.0669280749146731,"V25": 0.12853935827352803,"V26": -0.189114843888824,"V27": 0.13355837674038698,"V28": -0.0210530534538215, "Amount": 149.62}}}
+        </textarea>
+      </div>
+
+      <div class="form-group col-md-5">
+        <textarea class="form-control" rows="4">{"data": {"r1": {"Time": 6986.0,"V1": -4.39797444171999,"V2": 1.3583670283975802,"V3": -2.5928442182572997,"V4": 2.67978696694832,"V5": -1.12813094208956,"V6": -1.70653638774951,"V7": -3.49619729302467,"V8": -0.248777743025673,"V9": -0.24776789948007996,"V10": -4.80163740602813,"V11": 4.895844223475231,"V12": -10.912819319401901,"V13": 0.18437168583438698,"V14": -6.77109672468083,"V15": -0.00732618257771211,"V16": -7.358083221323461,"V17": -12.5984185405511,"V18": -5.13154862842983,"V19": 0.30833394575869105,"V20": -0.17160787864795998,"V21": 0.573574068424352,"V22": 0.17696771804819503,"V23": -0.436206883597401,"V24": -0.0535018648884285,"V25": 0.252405261951833,"V26": -0.657487754764504,"V27": -0.827135714578603,"V28": 0.8495733799857679,"Amount": 59.0}}}
+        </textarea>
+      </div>
+  
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
